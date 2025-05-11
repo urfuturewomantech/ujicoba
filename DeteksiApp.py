@@ -80,9 +80,7 @@ x_data = [
 # Jika tombol diklik
 if st.button("Prediksi", key="prediksi1"):
 
-    # Load model
-    model = joblib.load("decision_tree_model(1).pkl")  # ganti dengan nama file model kamu
-    sc = joblib.load('scaler(1).pkl')
+
     column_names = [
     "person_income", "loan_grade", "loan_int_rate", "loan_percent_income",
     "person_home_ownership_MORTGAGE", "person_home_ownership_RENT",
@@ -100,11 +98,11 @@ if st.button("Prediksi", key="prediksi1"):
     # }])
     # x_data_array=np.array(x_data)
     # x_data_reshape=x_data_array.reshape(1,-1)
-    x_data_df = pd.DataFrame([x_data], columns=column_names)
+ 
     
     # MinmMaxScaler
     # x_data_fit = sc.transform(x_data_reshape)
-    x_data_scaled = sc.transform(x_data_df)
+
     
     # Prediksi
 if st.button("Prediksi", key="prediksi_button"):
@@ -117,7 +115,6 @@ if st.button("Prediksi", key="prediksi_button"):
         "cb_person_default_on_file": cb_person_default_on_file
     }])
 
-    pred = pipeline.predict(input_df)
 
     if pred[0] == 1:
         st.success("Kredit LAYAK diberikan.")
