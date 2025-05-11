@@ -78,7 +78,8 @@ x_data = [
 # employment_map = {"employed": 1, "unemployed": 0}
 
 # Jika tombol diklik
-if st.button("Prediksi"):
+if st.button("Prediksi", key="prediksi1"):
+
     # Load model
     model = joblib.load("decision_tree_model(1).pkl")  # ganti dengan nama file model kamu
     sc = joblib.load('scaler(1).pkl')
@@ -106,7 +107,7 @@ if st.button("Prediksi"):
     x_data_scaled = sc.transform(x_data_df)
     
     # Prediksi
-if st.button("Prediksi"):
+if st.button("Prediksi", key="prediksi1"):
     input_df = pd.DataFrame([{
         "person_income": person_income,
         "loan_grade": loan_grade,
