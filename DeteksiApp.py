@@ -14,12 +14,12 @@ st.write("Masukkan informasi berikut untuk memprediksi kelayakan kredit.")
 # Streamlit Inputs
 st.header("Loan Application Input")
 
-person_income = st.number_input("Person Income", min_value=0, step=1)
-loan_grade = st.selectbox("Loan Grade", ["A", "B", "C", "D", "E", "F", "G"])
-loan_int_rate = st.number_input("Loan Interest Rate", min_value=0.0, step=0.01)
-loan_percent_income = st.number_input("Loan Percent Income", min_value=0.0, step=0.01)
-person_home_ownership = st.selectbox("Person Home Ownership", ["MORTGAGE", "RENT", "OTHER"])
-cb_person_default_on_file = st.radio("CB Person Default on File", ["Y", "N"])
+person_income = st.number_input("Person Income", min_value=0, step=1, key="income")
+loan_grade = st.selectbox("Loan Grade", ["A", "B", "C", "D", "E", "F", "G"], key="grade")
+loan_int_rate = st.number_input("Loan Interest Rate", min_value=0.0, step=0.01, key="interest")
+loan_percent_income = st.number_input("Loan Percent Income", min_value=0.0, step=0.01, key="percent")
+person_home_ownership = st.selectbox("Person Home Ownership", ["MORTGAGE", "RENT", "OTHER"], key="home")
+cb_person_default_on_file = st.radio("CB Person Default on File", ["Y", "N"], key="default")
 
 # Prediksi
 if st.button("Prediksi", key="prediksi_button"):
