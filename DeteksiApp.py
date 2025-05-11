@@ -107,7 +107,7 @@ if st.button("Prediksi", key="prediksi1"):
     x_data_scaled = sc.transform(x_data_df)
     
     # Prediksi
-if st.button("Prediksi", key="prediksi1"):
+if st.button("Prediksi", key="prediksi_button"):
     input_df = pd.DataFrame([{
         "person_income": person_income,
         "loan_grade": loan_grade,
