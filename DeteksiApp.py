@@ -4,8 +4,11 @@ import joblib
 from sklearn.preprocessing import MinMaxScaler
 import numpy as np
 
+# Load pipeline
+pipeline = joblib.load("pipeline_model.pkl")
+
 # Judul Aplikasi
-st.title("Deteksi Kelayakan Kredit")
+st.title("Deteksi Kelayakan Kredit KTA")
 
 # Deskripsi singkat
 st.write("Masukkan informasi berikut untuk memprediksi kelayakan kredit.")
@@ -77,8 +80,8 @@ x_data = [
 # Jika tombol diklik
 if st.button("Prediksi"):
     # Load model
-    model = joblib.load("decision_tree_model.pkl")  # ganti dengan nama file model kamu
-    sc = joblib.load('scaler.pkl')
+    model = joblib.load("decision_tree_model(1).pkl")  # ganti dengan nama file model kamu
+    sc = joblib.load('scaler(1).pkl')
     column_names = [
     "person_income", "loan_grade", "loan_int_rate", "loan_percent_income",
     "person_home_ownership_MORTGAGE", "person_home_ownership_RENT",
@@ -103,10 +106,19 @@ if st.button("Prediksi"):
     x_data_scaled = sc.transform(x_data_df)
     
     # Prediksi
-    pred = model.predict(x_data_scaled)
+if st.button("Prediksi"):
+    input_df = pd.DataFrame([{
+        "person_income": person_income,
+        "loan_grade": loan_grade,
+        "loan_int_rate": loan_int_rate,
+        "loan_percent_income": loan_percent_income,
+        "person_home_ownership": person_home_ownership,
+        "cb_person_default_on_file": cb_person_default_on_file
+    }])
 
-    # Output
-    if pred == 1:
+    pred = pipeline.predict(input_df)
+
+    if pred[0] == 1:
         st.success("Kredit LAYAK diberikan.")
     else:
         st.error("Kredit TIDAK layak diberikan.")
