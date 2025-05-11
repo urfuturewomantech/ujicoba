@@ -1,8 +1,8 @@
 import streamlit as st
 import pandas as pd
-import joblib
 from sklearn.preprocessing import MinMaxScaler
 import numpy as np
+import joblib
 
 # Load pipeline
 pipeline = joblib.load("pipeline_model.pkl")
